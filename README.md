@@ -31,6 +31,15 @@ In settings.py:
 
 SITE_NAME = "My site"
   ```
+  
+Make a `instant/extra_clients.js` template with this content:
+
+  ```django
+
+{% if user.is_superuser %}
+	{% include "mqueue_livefeed/js/client.js" %}
+{% endif %}
+  ```
 
 Usage
 -----
@@ -46,3 +55,5 @@ broadcasted to the feed. To change this: in settings.py:
 MQUEUE_STREAM_MODELS = False
 MQUEUE_STREAM_LOGS = False
   ```
+  
+Go to `/events/` to see your live feed in action.
