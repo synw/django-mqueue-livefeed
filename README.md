@@ -46,8 +46,8 @@ main template, at least jquery.
 Usage
 -----
 
-Once installed Django Mqueue will be able to deliver the events to a private channel. The default channel used is
-`$mqfeed`: if you wish to change this use the setting `MQL_CHANNEL="$myprivatechannel"`.
+Once the livefeed component installed Mqueue will deliver the events and logs to a feed reserved to the superuser. 
+The default channel used is `$mqfeed`: if you wish to change this use the setting `MQL_CHANNEL="$myprivatechannel"`.
 
 All the registered models events as well as the log events (if the mqueue log handler is used) will be 
 broadcasted to the feed. To change this: in settings.py:
