@@ -1,10 +1,9 @@
 Django Mqueue Livefeed
 ======================
 
-Realtime feed for Django Mqueue events.
+Realtime feed for Django Mqueue events. Features:
 
-- Push Django Mqueue events and log to a private channel
-
+- Push Django Mqueue events and logs to a private channel
 - See the events real time in a dashboard
 
 Dependencies
