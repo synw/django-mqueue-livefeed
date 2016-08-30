@@ -1,7 +1,7 @@
 Django Mqueue Livefeed
 ======================
 
-Realtime feeds for Django Mqueue.
+Realtime feed for Django Mqueue events.
 
 - Push Django Mqueue events and log to a private channel
 
@@ -21,7 +21,11 @@ Install
 
 Install the dependencies and clone the repository.
 
-Add `"mqueue_livefeed",` to INSTALLED_APPS and `url(r'^events/', include('mqueue_livefeed.urls')),` to the urls.
+Add `"mqueue_livefeed",` to INSTALLED_APPS
+
+Add `url(r'^events/', include('mqueue_livefeed.urls')),` to the urls.
+
+In settings.py:
   
   ```python
 
@@ -34,8 +38,8 @@ Usage
 Once installed Django Mqueue will be able to deliver the events to a private channel. The default channel used is
 `$mqfeed`: if you wish to change this use the setting `MQL_CHANNEL="$myprivatechannel"`.
 
-All the registered models events and the logs events (if the mqueue log handler is used) will be broadcasted to the 
-feed. To change this: in settings.py
+All the registered models events as well as the log events (if the mqueue log handler is used) will be 
+broadcasted to the feed. To change this: in settings.py:
 
   ```python
 
