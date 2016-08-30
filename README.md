@@ -41,6 +41,8 @@ Make a `instant/extra_clients.js` template with this content:
 {% endif %}
   ```
 
+This app is phone friendly. Note: the templates use bootstrap.
+
 Usage
 -----
 
@@ -59,3 +61,5 @@ MQUEUE_STREAM_LOGS = False
 Go to `/events/` to see your live feed in action. 
 
 Note: only the superuser can see the dashboard and connect to the events feed channel.
+
+![Dashboard screenshot](https://raw.github.com/synw/django-mqueue-livefeed/master/docs/img/mqueue-livefeed-dashboard.png)
