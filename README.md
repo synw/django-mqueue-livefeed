@@ -40,7 +40,8 @@ Make a `instant/extra_clients.js` template with this content:
 {% endif %}
   ```
 
-This app is phone friendly. Note: the templates use bootstrap.
+This app is phone friendly. Note: the templates use bootstrap, jquery and font-awesome: you must load these in your
+main template, at least jquery.
 
 Usage
 -----
