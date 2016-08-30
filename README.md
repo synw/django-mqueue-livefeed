@@ -62,4 +62,4 @@ Go to `/events/` to see your live feed in action.
 
 Note: only the superuser can see the dashboard and connect to the events feed channel.
 
-![Dashboard screenshot](https://raw.github.com/synw/django-mqueue-livefeed/master/docs/img/mqueue-livefeed-dashboard.png)
+![Dashboard screenshot](https://raw.githubusercontent.com/synw/django-mqueue-livefeed/master/docs/img/mqueue-livefeed-dashboard.png)
