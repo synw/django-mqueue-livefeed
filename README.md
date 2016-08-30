@@ -56,4 +56,6 @@ MQUEUE_STREAM_MODELS = False
 MQUEUE_STREAM_LOGS = False
   ```
   
-Go to `/events/` to see your live feed in action.
+Go to `/events/` to see your live feed in action. 
+
+Note: only the superuser can see the dashboard and connect to the events feed channel.
