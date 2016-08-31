@@ -1,7 +1,11 @@
 {% extends "base.html" %}
-{% load i18n mql %}
+{% load staticfiles i18n mql %}
 
 {% block title %}Mqueue Livefeed{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'mqueue/mqueue.css' %}" />
+{% endblock %}
 
 {% block content %}
 <style>

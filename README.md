@@ -29,6 +29,7 @@ In settings.py:
   ```python
 
 SITE_NAME = "My site"
+INSTANT_SUPERUSER_CHANNELS = ["$mqfeed"]
   ```
   
 Make a `instant/extra_clients.js` template with this content:
