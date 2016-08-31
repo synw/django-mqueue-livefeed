@@ -36,7 +36,7 @@ Make a `instant/extra_clients.js` template with this content:
 
   ```django
 
-{% if user.is_superuser %}
+{% if user.is_superuser and request.path == "/events/" %}
 	{% include "mqueue_livefeed/js/client.js" %}
 {% endif %}
   ```

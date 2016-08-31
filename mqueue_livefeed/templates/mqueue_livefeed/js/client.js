@@ -3,25 +3,13 @@
 var mq_callbacks = {
     "message": function(dataset) {
     	if (debug === true) { console.log('SET: '+JSON.stringify(dataset));};
-    	var channel = dataset['channel'];
+    	res = unpack_data(dataset);
+    	var message = res['message']
+    	var event_class = res['event_class']
+    	var message_label = res['message_label']
+    	var data = res['data']
+    	var channel = res['channel'];
     	var d = new Date();
-    	var timestamp = new Date(dataset['timestamp']*1000 + d.getTimezoneOffset() * 60000);
-    	var message = "";
-    	if (dataset['data'].hasOwnProperty('message')) {
-    		var message = dataset['data']['message'];
-    	}
-    	var message_label = "";
-    	if (dataset['data'].hasOwnProperty('message_label')) {
-    		var message_label = dataset['data']['message_label'];
-    	}
-    	var event_class = "";
-    	if (dataset['data'].hasOwnProperty('event_class')) {
-    		var event_class = dataset['data']['event_class'];
-    	}
-    	var data = "";
-    	if (dataset['data'].hasOwnProperty('data')) {
-    		var data = dataset['data']['data'];
-    	}
     	// handlers
     	if (debug === true) {
     			console.log('Msg: '+message+"\nChan: "+channel+"\nEvent_class: "+event_class+'\nData: '+JSON.stringify(data));
@@ -44,7 +32,7 @@ var mq_callbacks = {
     	   return timestring;
     	}
     	var timenow = getClockTime(false);
-    	var datapack = dataset['data']['data'];
+    	var datapack = data;
     	if ( datapack.hasOwnProperty('admin_url') ) {
     		message = '<a href="'+datapack['admin_url']+'" target="_blank">'+message+'</a>';
     	}
