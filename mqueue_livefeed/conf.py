@@ -9,7 +9,8 @@ try:
 except ImportError:
     raise ImproperlyConfigured(u'Mqueue Livefeed: Please set a SITE_NAME in settings.py')
 
-CHANNEL = getattr(settings, 'MQL_CHANNEL', "$mqfeed")
+CHANNEL = getattr(settings, 'MQL_MAIN_CHANNEL', "$mqfeed")
+
 # ensure that Centrifugo will use a private channel
 if not CHANNEL.startswith("$"):
     CHANNEL = "$"+CHANNEL
