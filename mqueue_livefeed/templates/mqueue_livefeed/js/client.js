@@ -1,6 +1,6 @@
 {% load mql %}
 
-var {% mqchannel %}_callbacks = {
+var mqfeed_callbacks = {
     "message": function(dataset) {
     	if (debug === true) { console.log('SET: '+JSON.stringify(dataset));};
     	res = unpack_data(dataset);
@@ -32,4 +32,4 @@ var {% mqchannel %}_callbacks = {
     {% include "instant/js/join_events.js" %}
 }
 
-var subscription = centrifuge.subscribe("{% mqchannel %}", mq_callbacks);
+var subscription = centrifuge.subscribe("{% mqchannel %}", mqfeed_callbacks);
