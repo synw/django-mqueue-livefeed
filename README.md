@@ -22,7 +22,14 @@ Install the dependencies and clone the repository.
 
 Add `"mqueue_livefeed",` to INSTALLED_APPS
 
-Add `url(r'^events/', include('mqueue_livefeed.urls')),` to the urls.
+Urls:
+
+  ```python
+from instant.views import instant_auth
+
+url(r'^events/', include('mqueue_livefeed.urls')),
+url(r'^centrifuge/auth/$', instant_auth, name='instant-auth'),
+  ```
 
 In settings.py:
   

@@ -1,6 +1,6 @@
 {% load mql %}
 
-var mq_callbacks = {
+var {% mqchannel %}_callbacks = {
     "message": function(dataset) {
     	if (debug === true) { console.log('SET: '+JSON.stringify(dataset));};
     	res = unpack_data(dataset);
