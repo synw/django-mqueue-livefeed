@@ -18,7 +18,7 @@ Dependencies
 Install
 -------
 
-Install the dependencies and clone the repository.
+``pip install django-mqueue-livefeed``
 
 Add `"mqueue_livefeed",` to INSTALLED_APPS
 
