@@ -6,10 +6,9 @@ var mqfeed_callbacks = {
     	res = unpack_data(dataset);
     	var message = res['message']
     	var event_class = res['event_class']
-    	var message_label = res['message_label']
     	var data = res['data']
     	var channel = res['channel'];
-    	var site = res['site'];
+    	var site = data['site'];
     	var d = new Date();
     	// handlers
     	if (debug === true) {
@@ -24,7 +23,8 @@ var mqfeed_callbacks = {
     	if ( site != "" ) {
     		var output ='<div class="pull-right badge" style="margin-left:0.5em;font-size:85%">'+site+'</div>';
     	}
-    	output = output+'<div style="margin:1.2em;">'+timenow+' '+message_label+'&nbsp;&nbsp;'+message+'</div>';
+    	var label = get_label(event_class);
+    	output = output+'<div style="margin:1.2em;">'+timenow+' '+label+'&nbsp;&nbsp;'+message+'</div>';
     	$('#reload').show();
     	$('#feedbox_default').hide();
     	$('#feedbox').prepend(output);
