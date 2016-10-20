@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from mqueue_livefeed.views import MQueueLiveView
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^', MQueueLiveView.as_view(), name="mqueue-livefeed"),
-)
+]
