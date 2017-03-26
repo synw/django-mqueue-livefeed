@@ -22,15 +22,6 @@ Install
 
 Add `"mqueue_livefeed",` to INSTALLED_APPS
 
-Urls:
-
-  ```python
-from instant.views import instant_auth
-
-url(r'^events/', include('mqueue_livefeed.urls')),
-url(r'^centrifuge/auth/$', instant_auth, name='instant-auth'),
-  ```
-
 In settings.py:
   
   ```python
@@ -43,13 +34,10 @@ Make a `instant/extra_clients.js` template with this content:
 
   ```django
 
-{% if user.is_superuser and request.path == "/events/" %}
+{% if user.is_superuser %}
 	{% include "mqueue_livefeed/js/client.js" %}
 {% endif %}
   ```
-
-This app is phone friendly. Note: the templates use bootstrap, jquery and font-awesome: you must load these in your
-main template, at least jquery.
 
 Usage
 -----
@@ -66,8 +54,11 @@ MQUEUE_STREAM_MODELS = False
 MQUEUE_STREAM_LOGS = False
   ```
   
-Go to `/events/` to see your live feed in action. 
+Events handling
+---------------
 
-Note: only the superuser can see the dashboard and connect to the events feed channel.
+Define your client-side behaviors in `instant/extra_handlers.js`.
 
-![Dashboard screenshot](https://raw.githubusercontent.com/synw/django-mqueue-livefeed/master/docs/img/mqueue-livefeed-dashboard.png)
+A ready to use user interface is available: the [Django Instant UI](https://github.com/synw/django-vvinstant). 
+Using this the events will be displayed as messages. 
+  
