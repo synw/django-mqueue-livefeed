@@ -46,12 +46,17 @@ Once the livefeed component installed Mqueue will deliver the events and logs to
 The default channel used is `$mqfeed`: if you wish to change this use the setting `MQL_CHANNEL="$myprivatechannel"`.
 
 All the registered models events as well as the log events (if the mqueue log handler is used) will be 
-broadcasted to the feed. To change this: in settings.py:
+published to the feed. To change this: in settings.py:
 
   ```python
-
 MQUEUE_STREAM_MODELS = False
 MQUEUE_STREAM_LOGS = False
+  ```
+
+Use `stream = True` when creating events if you want them published into the feed. 
+
+  ```python
+MEvent.objects.create('Something happened!', event_class="debug", channel="public:site", stream=True)
   ```
   
 Events handling
