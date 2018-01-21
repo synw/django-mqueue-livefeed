@@ -15,7 +15,8 @@ const app = new Vue({
         	numMsgsSites: {
         		{% for site in sites %}"{{site.slug}}": 0,{% endfor %}
         	},
-        	timelineNumMsgs: [], 
+        	timelineNumMsgs: [],
+        	timeframeMsgs: 0,
         }
 	},
 	methods: {
@@ -25,11 +26,8 @@ const app = new Vue({
 			this.msgs.unshift({"event_class": event_class, "message": message, "uid": uid, "site": site});
 			this.numMsgs++;
 			this.numMsgsSites[site]++;
-			var total = 1;
-			for(var i in this.timelineNumMsgs) { total += this.timelineNumMsgs[i]; };
-			console.log("TOTAL", total);
-			this.timelineNumMsgs.push(total);
-			console.log(Date.now());
+			this.timeframeMsgs++;
+			this.timelineNumMsgs.push(this.timeframeMsgs);
 		},
 		drawSparkline: function() {
 	        $('.numMsgsSparkline').sparkline(app.timelineNumMsgs);
