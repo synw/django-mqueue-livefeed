@@ -1,0 +1,12 @@
+{% load i18n %}
+<nav class="panel">
+	<p class="panel-heading">
+	    {% trans "Status" %}
+	</p>
+	<span class="panel-block">
+		{% verbatim %}
+			<i v-bind:class="msgIconClass"></i>&nbsp;{{numMsgs}}
+		{% endverbatim %}
+		&nbsp;<span class="numMsgsSparkline"></span>
+	</span>
+</nav>

@@ -1,0 +1,43 @@
+{% extends "mql/base.html" %}
+{% load staticfiles i18n mql %}
+
+
+{% block title %}Livefeed{% endblock %}
+
+{% block content %}
+<div class="columns is-gapless">
+	<div class="column">
+		{% for site in sites %}
+		<div id="site-{{ site.slug }}" class="xtile">
+			<div class="subtitle">{{ site.name }}</div>
+			<div class="is-centered has-text-grey-light" v-if="numMsgsSites.{{site.slug}} === 0">
+				<i class="fa fa-bell-slash-o fa-3x"></i>
+			</div>
+			<ul id="messages" v-for="msg in msgs">
+				<li v-bind:id="msg.uid" v-if="msg.site=='{{ site.slug }}'">
+					<a href="#" class="pull-right" @click="delMsg(msg)">
+						<i class="fa fa-close" style="color:red;position:relative;top:-0.3em"></i>
+					</a>
+					<span v-html="formatMsg(msg)"></span>
+				</li>
+			</ul>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="column is-2">
+		{% include "mql/status.html" %}
+	</div>
+</div>
+<script>
+maxSparklineDatapoints = 30;
+$(document).ready(function() {
+	var refreshId = setInterval( function() {
+		app.timelineNumMsgs.push(0);
+		if (app.timelineNumMsgs.length > maxSparklineDatapoints) {
+			app.timelineNumMsgs.shift();
+		}
+		app.drawSparkline();
+	},3000);
+});
+</script>
+{% endblock %}

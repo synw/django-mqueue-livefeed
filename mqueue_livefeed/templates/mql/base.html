@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" href="{% static 'bulma/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'instant/css/labels.css' %}">
+    <link rel="stylesheet" href="{% static 'mql/css/mql.css' %}">
+    <script type="text/javascript" src="{% static 'js/vue.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/vuex.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vv/vv.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vv/vvstore.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/vue.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.sparkline.min.js' %}"></script>
+</head>
+<body>
+<div id="app">
+{% block header %}
+<div class="container-fluid">
+	<div id="header" class="columns">
+		<div class="column">
+			<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+					<div class="title navbar-item">
+						<span class="icon"><i class="fa fa-paper-plane-o"></i></span>&nbsp;&nbsp;Livefeed
+					</div>
+				</div>
+				<div class="navbar-end">
+					
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+{% endblock header %}
+<div id="content" class="container-fluid">
+	{% block content %}{% endblock content %}
+</div>
+
+{% block footer %}
+<footer class="footer">
+</footer>
+{% endblock footer %}
+</div>
+<script type="text/javascript">
+	{% include "mql/js/app.js" %}
+	{% include "instant/event_class_format.js" %}
+</script>
+{% include "instant/client.html" %}
+</body>
+</html>
