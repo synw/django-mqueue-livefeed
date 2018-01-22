@@ -72,7 +72,6 @@ Todo
 
 - [ ] Add links to the admin interfaces from the dashboard events
 - [ ] Better layouts when there is a small number of sites
-- [ ] Redis cache
 - [ ] Multiple dashboards and group permissions
 - [ ] Rework the algorithm that calculates the timeline
 - [ ] Maybe some basic stats like messages rates, event classes ratios
