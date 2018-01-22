@@ -61,6 +61,11 @@ To generate test events a management command is available:
   
 It will generate 6 sites in the admin and feed them with events: run, go to `/events/` and watch
 
+Screenshot
+----------
+
+![Lvefeed screenshot](https://raw.github.com/synw/django-mqueue/master/docs/img/screenhot.png)
+
 Todo
 ----
 
