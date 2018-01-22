@@ -13,12 +13,13 @@ Dependencies
 Install
 -------
 
+Install Django Instant ([docs](http://django-instant.readthedocs.io/en/latest/src/install.html)) first then:
+
 ``pip install django-mqueue-livefeed``
 
 Add to INSTALLED_APPS:
 
    ```
-   "instant",
    "mqueue",
    "mqueue_livefeed",
    ```
