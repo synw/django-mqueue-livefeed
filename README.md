@@ -25,45 +25,36 @@ Add `"mqueue_livefeed",` to INSTALLED_APPS
 In settings.py:
   
   ```python
-
+SITE_SLUG = "mysite"
 SITE_NAME = "My site"
-INSTANT_SUPERUSER_CHANNELS = ["$mqfeed"]
+MQUEUE_HOOKS = {
+    "centrifugo": {
+        "path": "mqueue.hooks.centrifugo",
+        "channel": "$livefeed",
+    },
+}
+INSTANT_SUPERUSER_CHANNELS = (
+    ("$livefeed",),
+)
   ```
   
-Make a `instant/extra_clients.js` template with this content:
-
-  ```django
-
-{% if user.is_superuser %}
-	{% include "mqueue_livefeed/js/client.js" %}
-{% endif %}
-  ```
-
-Usage
------
-
-Once the livefeed component installed Mqueue will deliver the events and logs to a feed reserved to the superuser. 
-The default channel used is `$mqfeed`: if you wish to change this use the setting `MQL_CHANNEL="$myprivatechannel"`.
-
-All the registered models events as well as the log events (if the mqueue log handler is used) will be 
-published to the feed. To change this: in settings.py:
+Set the urls:
 
   ```python
-MQUEUE_STREAM_MODELS = False
-MQUEUE_STREAM_LOGS = False
-  ```
-
-Use `stream = True` when creating events if you want them published into the feed. 
-
-  ```python
-MEvent.objects.create('Something happened!', event_class="debug", channel="public:site", stream=True)
+  url(r'^events/', include('mqueue_livefeed.urls')),
   ```
   
-Events handling
----------------
+Create your monitored sites in the admin.
 
-Define your client-side behaviors in `instant/extra_handlers.js`.
+Test events
+-----------
 
-A ready to use user interface is available: the [Django Instant UI](https://github.com/synw/django-vvinstant). 
-Using this the events will be displayed as messages. 
+Go to `/events/'
+
+To generate test events it a management command is available:
+
+   ```
+   python3 manage.py feed_mq
+   ```
   
+It will generate 6 sites in the admin and feed them with events
