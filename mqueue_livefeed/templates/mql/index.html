@@ -16,7 +16,7 @@
 			<ul id="messages" v-for="msg in msgs">
 				<li v-bind:id="msg.uid" v-if="msg.site=='{{ site.slug }}'">
 					<a href="#" class="pull-right" @click="delMsg(msg)">
-						<i class="fa fa-close" style="color:red;position:relative;top:-0.3em"></i>
+						<span class="tag is-delete"></i>
 					</a>
 					<span v-html="formatMsg(msg)"></span>
 				</li>

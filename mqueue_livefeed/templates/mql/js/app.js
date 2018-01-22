@@ -17,20 +17,37 @@ const app = new Vue({
         	},
         	timelineNumMsgs: [],
         	timeframeMsgs: 0,
+        	numMsgsClasses: {},
         }
 	},
 	methods: {
 		processMsg: function(message, site, event_class, uid) {
 			this.drawSparkline();
 			this.flashNumMsgs();
-			this.msgs.unshift({"event_class": event_class, "message": message, "uid": uid, "site": site});
+			var obj = {
+					"event_class": event_class, 
+					"message": message, 
+					"uid": uid, 
+					"site": site,
+					"time": getClockTime(true)
+					};
+			this.msgs.unshift(obj);
 			this.numMsgs++;
 			this.numMsgsSites[site]++;
 			this.timeframeMsgs++;
+			//console.log(this.timeframeMsgs);
 			this.timelineNumMsgs.push(this.timeframeMsgs);
+			this.incrementNumMsgsClass(event_class);
 		},
 		drawSparkline: function() {
 	        $('.numMsgsSparkline').sparkline(app.timelineNumMsgs);
+		},
+		incrementNumMsgsClass: function(event_class) {
+			if (event_class in this.numMsgsClasses) {
+				this.numMsgsClasses[event_class]++;
+			} else {
+				this.numMsgsClasses[event_class] = 1; 
+			}
 		},
 		flashNumMsgs: function() {
 			this.msgIconClass["fa-envelope-o"] = false;
@@ -40,33 +57,28 @@ const app = new Vue({
 				this.msgIconClass["fa-envelope-open-o"] = false;
 			},500);
 		},
-	    formatMsg: function(msg, prefix) {
+		getEventLabel: function(event_class) {
 			var event_classes = this.ecs();
-			var label = "";
-			for (i=0;i<event_classes.length;i++) {
-				if (msg.event_class !== "default" || msg.event_class !== undefined) {
-					if (event_classes[i] === msg.event_class) {
-						label = get_label(event_classes[i]);
-						break
-					}
-				}
-			}
-			var res = label;
+			var label = get_label(event_class);
+			return label
+		},
+	    formatMsg: function(msg, prefix) {
+			var res = this.getEventLabel(msg.event_class);
 			var sitef = '&nbsp;[&nbsp;<span class="site-name">'+msg.site+'</span>&nbsp;]&nbsp; '
 			if (prefix !== undefined) {
 				res = res+"&nbsp;"+sitef+msg.message;
 			} else {
-				res = res+"&nbsp;&nbsp;"+msg.message;
+				res = res+"&nbsp;&nbsp;"+msg.time+"&nbsp;"+msg.message;
 			}
 			return res
 		},
 		delMsg: function(msg) {	
 			for (i=0;i<this.msgs.length;i++) {
 				if (msg.uid === this.msgs[i].uid) {
+					this.numMsgsClasses[msg.event_class]--;
 					var index = this.msgs.indexOf(msg);
 					this.msgs.splice(index, 1);
 					this.numMsgs--;
-					
 					break
 				}
 			}

@@ -20,6 +20,15 @@
 	overflow:auto;
 	padding:1em !important;
 }
+#sline-msgs {
+	max-width:80%;
+}
+.panel-block-num {
+	justify-content: space-between;
+}
+.num-msgs-class, #num-msgs {
+	font-weight:bold;
+}
 .debug {
 	background-color:lime;
 	border:1px dashed red;
