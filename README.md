@@ -64,7 +64,7 @@ It will generate 6 sites in the admin and feed them with events: run, go to `/ev
 Screenshot
 ----------
 
-![Lvefeed screenshot](https://raw.github.com/synw/django-mqueue/master/docs/img/screenhot.png)
+![Lvefeed screenshot](https://raw.githubusercontent.com/synw/django-mqueue-livefeed/master/docs/img/screenshot.png)
 
 Todo
 ----
