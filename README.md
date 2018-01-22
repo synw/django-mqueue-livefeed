@@ -69,7 +69,8 @@ Screenshot
 Todo
 ----
 
-- [ ] Screenshot for the readme
+- [ ] Add links to the admin interfaces from the dashboard events
+- [ ] Better layouts when there is a small number of sites
 - [ ] Redis cache
-- [ ] Better layouts when there is a small number of sites 
+- [ ] Rework the algorithm that calculates the timeline
 - [ ] Maybe some basic stats like messages rates, event classes ratios
