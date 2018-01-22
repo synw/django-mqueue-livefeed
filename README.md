@@ -60,3 +60,11 @@ To generate test events a management command is available:
    ```
   
 It will generate 6 sites in the admin and feed them with events: run, go to `/events/` and watch
+
+Todo
+----
+
+- [ ] Screenshot for the readme
+- [ ] Redis cache
+- [ ] Better layouts when there is a small number of sites 
+- [ ] Maybe some basic stats like messages rates, event classes ratios
