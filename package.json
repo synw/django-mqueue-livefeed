@@ -1,0 +1,46 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .ts,vue --fix --ignore-path .gitignore .",
+    "lint2": "vue-tsc --noEmit",
+    "dev": "vite",
+    "build:prepare": "del ./backend/static/assets/* ./backend/templates/index.html",
+    "build:build": "vite build --base=/static/",
+    "build:moveindex": "move-file ./backend/static/index.html ./backend/templates/index.html",
+    "build:clean": "del ./dist",
+    "build": "run-s build::prepare build::build build::moveindex build:clean",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@fnando/sparkline": "^0.3.10",
+    "@vueuse/core": "^6.0.0",
+    "djangoinstant": "^0.1.0",
+    "vue": "^3.1.1"
+  },
+  "devDependencies": {
+    "@iconify/json": "^1.1.373",
+    "@snowind/plugin": "^0.0.2",
+    "@tailwindcss/forms": "^0.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.1.4",
+    "autoprefixer": "^10.2.6",
+    "del-cli": "^4.0.1",
+    "eslint": "^7.30.0",
+    "move-file-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.5",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "sass": "^1.35.1",
+    "tailwindcss": "^2.2.4",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5",
+    "vite": "^2.3.8",
+    "vite-plugin-components": "^0.12.2",
+    "vite-plugin-icons": "^0.6.5",
+    "vue-loader": "^16.3.0",
+    "vue-tsc": "^0.2.0"
+  }
+}

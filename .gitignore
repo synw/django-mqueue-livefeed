@@ -1,9 +1,19 @@
 *node_modules/
-settings.py
+localsettings.py
 *.sqlite3
 .project
 .pydevproject
 .settings
+.DS_Store
+dist
+dist-ssr
+!/doc/dist
+*.local
+yarn.lock
+yarn-error.log
+/dev
+.vscode
+storybook-static
 
 __pycache__/
 *.py[cod]

@@ -1,1 +1,0 @@
-app.processMsg(message, site, event_class, uid);
