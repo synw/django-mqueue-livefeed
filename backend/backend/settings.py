@@ -138,6 +138,13 @@ CORS_ALLOW_CREDENTIALS = True
 SITE_SLUG = "livefeed"
 SITE_NAME = "Livefeed"
 
+CENTRIFUGO_HOST = "http://localhost"
+CENTRIFUGO_PORT = 8001
+# update this from your Centrifugo config file:
+# https://github.com/synw/django-instant#quick-start
+CENTRIFUGO_HMAC_KEY = ""
+CENTRIFUGO_API_KEY = ""
+
 MQUEUE_HOOKS = {
     "centrifugo": {
         "path": "mqueue.hooks.centrifugo",
