@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mqueue Livefeed</title>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.css">
+    <link rel="stylesheet" href="http://localhost:8000/static/mqueue/mqueue.css">
+    <script type="module" crossorigin src="/static/assets/index.js"></script>
+    <link rel="modulepreload" href="/static/assets/vendor-645c40f2.js">
+    <link rel="stylesheet" href="/static/assets/index-5557b434.css">
+  </head>
+
+  <body>
+    <div id="app"></div>
+    
+
+    <script>
+      localStorage.setItem("wsUri", "{{ uri }}") // the {{ uri }} template tag will be interpreted by Django at runtime
+    </script>
+  </body>
+
+</html>
