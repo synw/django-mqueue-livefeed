@@ -1,7 +1,7 @@
 Django Mqueue Livefeed
 ======================
 
-Monitor events coming from multiple sites via websockets
+A demo showing how to monitor events coming from multiple Django sites via websockets
 
 Dependencies
 ------------
@@ -13,65 +13,68 @@ Dependencies
 Install
 -------
 
-Install Django Instant ([docs](http://django-instant.readthedocs.io/en/latest/src/install.html)) first then:
-
-``pip install django-mqueue-livefeed``
-
-Add to INSTALLED_APPS:
+Clone the repository and install the packages:
 
    ```
-   "mqueue",
-   "mqueue_livefeed",
+   pip install -r requirements.txt
    ```
 
-In settings.py:
-  
-  ```python
-SITE_SLUG = "mysite"
-SITE_NAME = "My site"
-MQUEUE_HOOKS = {
-    "centrifugo": {
-        "path": "mqueue.hooks.centrifugo",
-        "channel": "$livefeed",
-    },
-}
-INSTANT_SUPERUSER_CHANNELS = (
-    ("$livefeed",),
-)
-  ```
-  
-Note: you can apply the settings above to as much sites as you want to emit their events in the feed. Just create 
-a site object in the admin for each of the sites to have them in the dashboard.
-  
-Set the urls:
+[Install a Centrifugo websockets server](https://github.com/synw/django-instant#quick-start) and
+[configure the Django settings](https://github.com/synw/django-instant#configure-the-django-settings)
 
-  ```python
-  url(r'^events/', include('mqueue_livefeed.urls')),
-  ```
-  
-Create your monitored sites in the admin. And go to `/events/`
+Initialize
+----------
 
-Test events
------------
-
-To generate test events a management command is available:
+Migrate, create a superuser. Then initialize the database with this command:
 
    ```
-   python3 manage.py feed_mq
+   python backend/manage.py init_db
    ```
   
-It will generate 6 sites in the admin and feed them with events: run, go to `/events/` and watch
+It will generate 6 sites in the admin and the websockets channel
+
+Run
+---
+
+Run the dev server:
+
+   ```
+   python backend/manage.py runserver
+   ```
+
+Auto generate events for the demo:
+
+   ```
+   python backend/manage.py feed_mq
+   ```
+  
+Open the frontend at localhost:8000 and watch
+
+Architecture
+------------
+
+The frontend is a Vuejs 3 Typescript app running on Vitejs. It is compiled to be served by
+Django as static files and an *index.html* template.
+
+To install the frontend for dev mode:
+   ```
+   yarn install
+   ```
+
+To run the frontend with Vitejs in dev mode on localhost:3000:
+
+   ```
+   yarn dev
+   ```
+
+To compile the frontend to Django template and static files:
+
+   ```
+   yarn build
+   ```
 
 Screenshot
 ----------
 
-![Lvefeed screenshot](https://raw.githubusercontent.com/synw/django-mqueue-livefeed/master/docs/img/screenshot.png)
+![Livefeed screenshot](docs/img/screenshot.png)
 
-Todo
-----
-
-- [ ] Add links to the admin interfaces from the dashboard events
-- [ ] Better layouts when there is a small number of sites
-- [ ] Multiple dashboards and group permissions
-- [ ] Rework the algorithm that calculates the timeline
-- [ ] Maybe some basic stats like messages rates, event classes ratios
