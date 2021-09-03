@@ -7,8 +7,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Django project directory
 PROJECT_PATH = BASE_DIR / "backend"
 
-print("Base dir", BASE_DIR)
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "x4z1p1_e=vm^swmnt6m83-m@1bi=3j9jx0_@zzkm7mj-msj%rq"
 
@@ -138,12 +136,12 @@ CORS_ALLOW_CREDENTIALS = True
 SITE_SLUG = "livefeed"
 SITE_NAME = "Livefeed"
 
-CENTRIFUGO_HOST = "http://localhost"
-CENTRIFUGO_PORT = 8001
 # update this from your Centrifugo config file:
 # https://github.com/synw/django-instant#quick-start
-CENTRIFUGO_HMAC_KEY = ""
-CENTRIFUGO_API_KEY = ""
+# CENTRIFUGO_HOST = "http://localhost"
+# CENTRIFUGO_PORT = 8427
+# CENTRIFUGO_HMAC_KEY = ""
+# CENTRIFUGO_API_KEY = ""
 
 MQUEUE_HOOKS = {
     "centrifugo": {
