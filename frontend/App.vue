@@ -5,7 +5,6 @@
     <div class="flex items-center w-full h-16 bg-primary text-primary-r">
       <i-gis-earth-network-o class="ml-3 text-3xl"></i-gis-earth-network-o>&nbsp;&nbsp;
       <span class="text-2xl">Mqueue Livefeed</span>
-      <sparkline-chart class="pt-8 ml-5"></sparkline-chart>
     </div>
     <div class="flex flex-row">
       <div class="flex-grow p-5">
@@ -31,13 +30,11 @@ import { connectWs, initWs } from '@/ws';
 import { sites } from "@/const";
 import SiteQueue from '@/components/SiteQueue.vue';
 import StatusBar from '@/components/StatusBar.vue';
-import SparklineChart from "@/components/SparklineChart.vue";
 
 export default defineComponent({
   components: {
     SiteQueue,
     StatusBar,
-    SparklineChart,
   },
   setup() {
     onMounted(() => {

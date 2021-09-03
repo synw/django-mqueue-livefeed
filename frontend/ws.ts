@@ -4,7 +4,7 @@ import { eventsQueue } from "./state";
 
 let instant = new Instant(
   "http://localhost:8000", // Django backend's address
-  "ws://localhost:8001", // Centrifugo server's address
+  "ws://localhost:8427", // Centrifugo server's address
   true, // verbosity (optional, default: false)
 );
 
@@ -15,20 +15,12 @@ function _onMessage(msg: Message): void {
 
 function initWs() {
   const uriFromBackend = localStorage.getItem("wsUri");
-  let uri = "ws://localhost:8001";
-  if (uriFromBackend !== null) {
-    if (!import.meta.env.DEV) {
-      uri = uriFromBackend
-    } else {
-      const u = import.meta.env.VITE_WS_SERVER_URI;
-      if (u) {
-        uri = u.toString()
-      } else {
-        throw new Error("Can not find dev websockets uri")
-      }
-    }
+  let uri = "ws://localhost:8427";
+  if (uriFromBackend !== null && import.meta.env.PROD) {
+    uri = uriFromBackend
   }
   instant = new Instant("http://localhost:8000", uri, true);
+  console.log("Ws uri", instant.websocketsUri)
   instant.onMessage = _onMessage;
 }
 
