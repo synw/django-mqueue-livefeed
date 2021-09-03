@@ -19,8 +19,14 @@ Clone the repository and install the packages:
    pip install -r requirements.txt
    ```
 
-[Install a Centrifugo websockets server](https://github.com/synw/django-instant#quick-start) and
-[configure the Django settings](https://github.com/synw/django-instant#configure-the-django-settings)
+Use the installer to get the and configure a local websockets server:
+
+   ```
+   python backend/manage.py install
+   ```
+
+Or install the Centrifugo websockets server [manualy](https://github.com/synw/django-instant#quick-start)
+and configure the Django settings
 
 Initialize
 ----------
@@ -28,6 +34,8 @@ Initialize
 Migrate, create a superuser. Then initialize the database with this command:
 
    ```
+   python backend/manage.py migrate
+   python backend/manage.py createsuperuser
    python backend/manage.py init_db
    ```
   
@@ -36,19 +44,27 @@ It will generate 6 sites in the admin and the websockets channel
 Run
 ---
 
-Run the dev server:
+Run the websockets server:
+
+   ```
+   python backend/manage.py runws
+   ```
+
+In another terminal run the backend dev server:
 
    ```
    python backend/manage.py runserver
    ```
 
-Auto generate events for the demo:
+Open the frontend at localhost:8000 and login with your superuser
+
+In another terminal auto generate events for the demo:
 
    ```
    python backend/manage.py feed_mq
    ```
   
-Open the frontend at localhost:8000 and watch
+Watch the events coming in the frontend
 
 Architecture
 ------------
