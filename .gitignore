@@ -1,71 +1,47 @@
-*node_modules/
-localsettings.py
-*.sqlite3
-.project
-.pydevproject
-.settings
-.DS_Store
-dist
-dist-ssr
-!/doc/dist
-*.local
-yarn.lock
-yarn-error.log
-/dev
-.vscode
-/centrifugo
-bin/
-pyvenv.cfg
+# virtualenv
+.venv
 
+# Packaging
+build
+dist
+*.egg-info
+**/node_modules/
+yarn.lock
+package-lock.json
+/centrifugo
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 
-# C extensions
-*.so
+# Site media and builded statics
+/var/
+/sandbox/static
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Settings
+localsettings.py
 
 # Unit test / coverage reports
 htmlcov/
-.tox/
 .coverage
-.coverage.*
 .cache
+.pytest_cache
 nosetests.xml
 coverage.xml
-*,cover
+.tox
 
-# Django stuff:
+# VS Code
+.vscode
+
+# Mac Os
+.DS_Store
+
+# Temp files
+*~
+.~lock*
+
+# Swap files
+*.sw[po]
+
+# Logging files
 *.log
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-

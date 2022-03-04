@@ -1,59 +1,40 @@
 Django Mqueue Livefeed
 ======================
 
-A demo showing how to monitor events coming from multiple Django sites via websockets
+A demo showing how to monitor events coming from Django sites via websockets with [django-mqueue](https://github.com/synw/django-mqueue)
+and [django-instant](https://github.com/synw/django-instant). Two versions are available:
 
-Dependencies
-------------
+- [Single page app](#single-page-app) with Vuejs
+- [Template demo](#template-demo) with Alpinejs
 
-- [Django Mqueue](https://github.com/synw/django-mqueue): the events queue for Django.
-- [Centrifugo](https://github.com/centrifugal/centrifugo): the websockets server.
-- [Django Instant](https://github.com/synw/django-instant): the Centrifugo <-> Django layer
 
 Install
 -------
 
-Clone the repository and install the packages:
+Clone the repository and install the project:
 
    ```
-   pip install -r requirements.txt
+   make install
    ```
 
-Use the installer to get the and configure a local websockets server:
-
-   ```
-   python backend/manage.py install
-   ```
+This will install the backend and a local Centrifugo websockets server for the demo
 
 Or install the Centrifugo websockets server [manualy](https://github.com/synw/django-instant#quick-start)
 and configure the Django settings
 
-Initialize
-----------
+Template demo
+-------------
 
-Migrate, create a superuser. Then initialize the database with this command:
-
-   ```
-   python backend/manage.py migrate
-   python backend/manage.py createsuperuser
-   python backend/manage.py init_db
-   ```
-  
-It will generate 6 sites in the admin and the websockets channel
-
-Run
----
-
-Run the websockets server:
+Run the http server:
 
    ```
-   python backend/manage.py runws
+   make run
    ```
 
-In another terminal run the backend dev server:
+Run the websockets server in another terminal:
 
    ```
-   python backend/manage.py runserver
+   make runws
    ```
 
 Open the frontend at localhost:8000 and login with your superuser
@@ -61,13 +42,16 @@ Open the frontend at localhost:8000 and login with your superuser
 In another terminal auto generate events for the demo:
 
    ```
-   python backend/manage.py feed_mq
+   make pushevents
    ```
   
 Watch the events coming in the frontend
 
-Architecture
-------------
+Single page app
+---------------
+
+Run the same commands as above and click the spa link in frontend to see the
+compiled demo. To run it in dev mode and build it read the instructions below.
 
 The frontend is a Vuejs 3 Typescript app running on Vitejs. It is compiled to be served by
 Django as static files and an *index.html* template.

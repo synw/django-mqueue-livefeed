@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %}LoginView{% endblock %}
+
+{% block content %}
+<div class="flex justify-center w-full mt-20 ">
+  <div class="p-5 border rounded-lg border-stone-300">
+    <form method="POST" id="loginform">{% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-right w-96">
+        <input type="submit" name="submit" class="mt-5">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

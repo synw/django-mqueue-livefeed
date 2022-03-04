@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#loginform > p {
+    @apply flex w-96 space-y-3
+  }
+#loginform > p > label {
+  @apply flex-grow
+}
+#loginform input[type=submit] {
+  @apply bg-slate-500 text-white p-2 rounded-sm
+}
